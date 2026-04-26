@@ -22,7 +22,7 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/${{ secrets.OIDC_ROLE_NAME }}
-          aws-region: eu-central-1
+          aws-region: us-east-1
           role-session-name: GitHubActionsRole
  
       - name: Verify AWS identity
