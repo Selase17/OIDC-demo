@@ -35,7 +35,7 @@ jobs:
         run: aws sts get-caller-identity
 
       - name: List S3 buckets
-        run: aws s3 lsS
+        run: aws s3 ls
 
         # ✅ Send Slack Notification on Success
       - name: Send Slack Notification (Success)
