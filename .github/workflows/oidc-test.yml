@@ -37,22 +37,22 @@ jobs:
       - name: List S3 buckets
         run: aws s3 ls
 
-      #   # ✅ Send Slack Notification on Success
-      # - name: Send Slack Notification (Success)
-      #     if: success()
-      #     run: |
-      #       response=$(curl -X POST -H 'Content-type: application/json' --data '{
-      #         "text": "🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩\n✅ *OIDC Workflow Completed Successfully!* 🎉\n🚀 *Repository:* `${{ github.repository }}`\n🔗 *Commit:* <${{ github.event.head_commit.url }}|View Commit>\n🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩"
-      #       }' ${{ secrets.SLACK_WEBHOOK_URL }} 2>&1)
-      #       echo "Slack Response: $response"
+        # ✅ Send Slack Notification on Success
+      - name: Send Slack Notification (Success)
+          if: success()
+          run: |
+            response=$(curl -X POST -H 'Content-type: application/json' --data '{
+              "text": "🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩\n✅ *OIDC Workflow Completed Successfully!* 🎉\n🚀 *Repository:* `${{ github.repository }}`\n🔗 *Commit:* <${{ github.event.head_commit.url }}|View Commit>\n🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩"
+            }' ${{ secrets.SLACK_WEBHOOK_URL }} 2>&1)
+            echo "Slack Response: $response"
   
   
-      #   # ❌ Send Slack Notification on Failure
-      # - name: Send Slack Notification (Failure)
-      #     if: failure()
-      #     run: |
-      #       response=$(curl -X POST -H 'Content-type: application/json' --data '{
-      #         "text": "🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥\n❌ *OIDC Workflow Failed!* 🚨\n💥 *Repository:* `${{ github.repository }}`\n🔗 *Commit:* <${{ github.event.head_commit.url }}|View Commit>\n⚠️ Please check the logs for details.\n🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥"
-      #       }' ${{ secrets.SLACK_WEBHOOK_URL }} 2>&1)
-      #       echo "Slack Response: $response"
+        # ❌ Send Slack Notification on Failure
+      - name: Send Slack Notification (Failure)
+          if: failure()
+          run: |
+            response=$(curl -X POST -H 'Content-type: application/json' --data '{
+              "text": "🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥\n❌ *OIDC Workflow Failed!* 🚨\n💥 *Repository:* `${{ github.repository }}`\n🔗 *Commit:* <${{ github.event.head_commit.url }}|View Commit>\n⚠️ Please check the logs for details.\n🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥"
+            }' ${{ secrets.SLACK_WEBHOOK_URL }} 2>&1)
+            echo "Slack Response: $response"
   
